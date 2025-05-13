@@ -1,35 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { Box } from "@mui/material";
+import LoginForm from "./components/form/LoginForm";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const handleLogin = async ({
+    email,
+    password,
+    rememberMe,
+  }: {
+    email: string;
+    password: string;
+    rememberMe: boolean;
+  }) => {
+    // Aquí iría tu lógica de autenticación real
+    console.log("Intentando login con:", { email, password, rememberMe });
+
+    // Simular una llamada API
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    // Si la autenticación es exitosa:
+    if (email === "usuario@ejemplo.com" && password === "contraseña123") {
+      console.log("Login exitoso!");
+      window.location.href = "/dashboard";
+    } else {
+      // Si falla, lanzar un error para que el formulario lo maneje
+      throw new Error("Credenciales inválidas");
+    }
+  };
+
+  const handleForgotPassword = () => {
+    console.log("Redirigiendo a recuperación de contraseña");
+    // Implementar navegación a la página de recuperación
+  };
+
+  const handleRegister = () => {
+    console.log("Redirigiendo a registro");
+    // Implementar navegación a la página de registro
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Box>
+      <LoginForm
+        onLogin={handleLogin}
+        onForgotPassword={handleForgotPassword}
+        onRegister={handleRegister}
+        title="Bienvenido de nuevo"
+        submitButtonText="Acceder"
+        initialEmail="usuario@ejemplo.com"
+        // logoComponent={<Logo height={60} />}
+      />
+    </Box>
+  );
 }
 
-export default App
+export default App;
