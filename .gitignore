@@ -1,0 +1,57 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependency directories
+node_modules
+/.pnp
+.pnp.js
+
+# Build outputs
+dist
+dist-ssr
+build
+*.local
+
+# Testing
+coverage
+/cypress/videos/
+/cypress/screenshots/
+
+# TypeScript
+*.tsbuildinfo
+.tscache/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Cache and temp files
+.cache
+.temp
+.eslintcache
+.stylelintcache
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Misc
+.vercel
+.netlify
+stats.html
+storybook-static/
