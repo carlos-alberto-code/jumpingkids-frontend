@@ -4,22 +4,22 @@ import LoginForm from "./components/form/LoginForm";
 
 function App() {
   const handleLogin = async ({
-    email,
+    username,
     password,
     rememberMe,
   }: {
-    email: string;
+    username: string;
     password: string;
     rememberMe: boolean;
   }) => {
     // Aquí iría tu lógica de autenticación real
-    console.log("Intentando login con:", { email, password, rememberMe });
+    console.log("Intentando login con:", { username, password, rememberMe });
 
     // Simular una llamada API
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     // Si la autenticación es exitosa:
-    if (email === "usuario@ejemplo.com" && password === "contraseña123") {
+    if (username === "usuario@ejemplo.com" && password === "contraseña123") {
       console.log("Login exitoso!");
       window.location.href = "/dashboard";
     } else {
@@ -44,9 +44,9 @@ function App() {
         onLogin={handleLogin}
         onForgotPassword={handleForgotPassword}
         onRegister={handleRegister}
-        title="Bienvenido de nuevo"
+        title="Bienvenido"
         submitButtonText="Acceder"
-        initialEmail="usuario@ejemplo.com"
+        initialEmail="cabaltazar@bmx.com.mx"
         // logoComponent={<Logo height={60} />}
       />
     </Box>

@@ -18,7 +18,7 @@ import {
 interface LoginFormProps {
   // Callbacks
   onLogin: (credentials: {
-    email: string;
+    username: string;
     password: string;
     rememberMe: boolean;
   }) => Promise<void>;
@@ -32,7 +32,7 @@ interface LoginFormProps {
   disableRememberMe?: boolean;
 
   // Visual components
-  //   logoComponent?: React.ReactNode;
+    logoComponent?: React.ReactNode;
 }
 
 const LoginForm: React.FC<LoginFormProps> = ({
@@ -43,7 +43,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
   submitButtonText = "Iniciar Sesión",
   initialEmail = "",
   disableRememberMe = false,
-  //   logoComponent
+  logoComponent
 }) => {
   const [formData, setFormData] = useState({
     email: initialEmail,
@@ -84,7 +84,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
 
       // Use the callback provided by the parent
       await onLogin({
-        email: formData.email,
+        username: formData.email,
         password: formData.password,
         rememberMe: formData.rememberMe,
       });
@@ -106,7 +106,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
       }}
     >
       <Paper
-        elevation={3}
+        elevation={10}
         sx={{
           p: 4,
           maxWidth: "400px",
@@ -114,11 +114,11 @@ const LoginForm: React.FC<LoginFormProps> = ({
           mx: 2,
         }}
       >
-        {/* {logoComponent && (
+        {logoComponent && (
           <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
             {logoComponent}
           </Box>
-        )} */}
+        )}
 
         <Typography
           variant="h5"
