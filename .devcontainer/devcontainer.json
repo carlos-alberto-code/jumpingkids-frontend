@@ -1,0 +1,36 @@
+{
+    "name": "React TypeScript Vite",
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/devcontainers/features/github-cli:1": {}
+    },
+    "forwardPorts": [5173],
+    "postCreateCommand": "npm install",
+    "remoteUser": "node",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "ms-vscode.vscode-typescript-next",
+                "christian-kohler.path-intellisense",
+                "esbenp.prettier-vscode",
+                "bradlc.vscode-tailwindcss",
+                "dsznajder.es7-react-js-snippets",
+                "formulahendry.auto-rename-tag",
+                "mgmcdermott.vscode-language-babel",
+                "vitest.explorer"
+            ]
+        },
+        "settings": {
+            "editor.formatOnSave": true,
+            "editor.defaultFormatter": "esbenp.prettier-vscode",
+            "editor.codeActionsOnSave": {
+                "source.fixAll.eslint": "explicit"
+            },
+            "typescript.tsdk": "node_modules/typescript/lib",
+            "javascript.updateImportsOnFileMove.enabled": "always",
+            "typescript.updateImportsOnFileMove.enabled": "always"
+        }
+    }
+}
