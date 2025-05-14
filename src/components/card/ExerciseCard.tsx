@@ -1,6 +1,6 @@
+import React from 'react';
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import { Box, Card, Chip, Stack, Tooltip, Typography } from "@mui/material";
-import React from "react";
+import { Box, Card, Chip, Grid, Stack, Tooltip, Typography } from "@mui/material";
 
 interface ExerciseCardProps {
   title: string;
@@ -18,108 +18,108 @@ const ExerciseCard: React.FC<ExerciseCardProps> = ({
   return (
     <Card
       sx={{
-        display: "flex",
-        borderRadius: "24px",
+        borderRadius: "18px",
         width: "100%",
-        maxWidth: "600px",
         p: 2,
         position: "relative",
-        alignItems: "center",
-        height: "120px",
       }}
     >
-      <Box
-        sx={{
-          width: "80px",
-          height: "90px",
-          flexShrink: 0,
-          mr: 3,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Box
-          component="img"
-          src={gifUrl}
-          alt={title}
-          sx={{
-            maxWidth: "100%",
-            maxHeight: "100%",
-            objectFit: "contain",
-          }}
-        />
-      </Box>
+      <Grid container spacing={2} alignItems="center" columns={12}>
+        {/* Primera columna - GIF */}
+        <Grid size={{ xs: 3, sm: 2, md: 2, lg: 2 }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "100%",
+            }}
+          >
+            <Box
+              component="img"
+              src={gifUrl}
+              alt={title}
+              sx={{
+                maxWidth: "100%",
+                maxHeight: "100%",
+                objectFit: "contain",
+              }}
+            />
+          </Box>
+        </Grid>
 
-      {/* Content section - Title and chips */}
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-start",
-          alignItems: "flex-start",
-          flexGrow: 1,
-          padding: 0, // Remove padding
-        }}
-      >
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{
-            mb: 1,
-            fontSize: "18px",
-            fontWeight: 600,
-            color: "#333",
-            textAlign: "left",
-            width: "100%",
-          }}
+        {/* Segunda columna - Título y Tags */}
+        <Grid size={{ xs: 7, sm: 8, md: 8, lg: 9 }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              alignItems: "flex-start",
+            }}
+          >
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{
+                mb: 1,
+                fontSize: "1.125rem",
+                fontWeight: 600,
+                textAlign: "left",
+                width: "100%",
+              }}
+            >
+              {title}
+            </Typography>
+
+            <Stack direction="row" spacing={1} flexWrap="wrap">
+              <Chip
+                label={category}
+                variant="filled"
+                sx={{
+                  borderRadius: "8px",
+                  border: "1px solid #ddd",
+                  fontSize: "0.875rem",
+                  backgroundColor: "transparent",
+                  mb: 0.5,
+                }}
+              />
+              <Chip
+                label={duration}
+                variant="outlined"
+                sx={{
+                  borderRadius: "8px",
+                  border: "1px solid #ddd",
+                  fontSize: "0.875rem",
+                  backgroundColor: "transparent",
+                  mb: 0.5,
+                }}
+              />
+            </Stack>
+          </Box>
+        </Grid>
+
+        {/* Tercera columna - Ícono */}
+        <Grid 
+          size={{ xs: 2, sm: 2, md: 2, lg: 1 }}
+          sx={{ display: "flex", justifyContent: "center" }}
         >
-          {title}
-        </Typography>
-
-        <Stack direction="row" spacing={1}>
-          <Chip
-            label={category}
-            variant="outlined"
+          <Box
             sx={{
-              borderRadius: "8px", // Less rounded, more rectangular
-              border: "1px solid #ddd",
-              height: "32px",
-              fontSize: "14px",
-              backgroundColor: "transparent",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: "50%",
+              color: "#666",
+              p: 1,
             }}
-          />
-          <Chip
-            label={duration}
-            variant="outlined"
-            sx={{
-              borderRadius: "8px", // Less rounded, more rectangular
-              border: "1px solid #ddd",
-              height: "32px",
-              fontSize: "14px",
-              backgroundColor: "transparent",
-            }}
-          />
-        </Stack>
-      </Box>
-
-      {/* Clock icon on right */}
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          marginLeft: "auto",
-          width: "40px",
-          height: "40px",
-          borderRadius: "50%",
-          color: "#666",
-        }}
-      >
-        <Tooltip title="En espera">
-          <AccessTimeIcon fontSize="medium" />
-        </Tooltip>
-      </Box>
+          >
+            <Tooltip title="En espera">
+              <AccessTimeIcon fontSize="medium" />
+            </Tooltip>
+          </Box>
+        </Grid>
+      </Grid>
     </Card>
   );
 };
