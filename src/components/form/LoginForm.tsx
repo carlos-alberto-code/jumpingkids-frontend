@@ -32,12 +32,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ onRegister }) => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+  const handleChange = (changeEvent: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = changeEvent.target;
+    setFormData({...formData, [name]: value});
 
     if (error) setError(null);
   };
