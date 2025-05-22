@@ -20,7 +20,7 @@ const ExerciseList = ({ initialExercises }: ExerciseListProps) => {
 
   return (
     <Paper
-      elevation={2}
+      elevation={5}
       sx={{
         width: "100%",
         height: "100%",
@@ -36,7 +36,7 @@ const ExerciseList = ({ initialExercises }: ExerciseListProps) => {
           overflow: "auto", // Esto permite el scroll
           height: "100%",
           "&::-webkit-scrollbar": {
-            width: "8px",
+            width: "9px",
           },
           "&::-webkit-scrollbar-thumb": {
             borderRadius: "4px",
