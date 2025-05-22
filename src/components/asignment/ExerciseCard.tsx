@@ -4,23 +4,19 @@ import React from "react";
 
 interface ExerciseCardProps {
   title: string;
-  isFirst?: boolean;
 }
 
-const ExerciseCard: React.FC<ExerciseCardProps> = ({
-  title,
-  isFirst = false,
-}) => {
+const ExerciseCard: React.FC<ExerciseCardProps> = ({ title }) => {
   return (
     <Card
       sx={{
-        borderRadius: "18px",
+        borderRadius: "8px",
         width: "100%",
         p: 2,
-        position: "relative",
-        borderLeft: isFirst
-          ? (theme) => `4px solid ${theme.palette.primary.main}`
-          : "none",
+        transition: "background-color 0.2s",
+        "&:hover": {
+          backgroundColor: "rgba(0, 0, 0, 0.03)",
+        },
       }}
     >
       <Box
@@ -31,22 +27,19 @@ const ExerciseCard: React.FC<ExerciseCardProps> = ({
         }}
       >
         <Typography
-          variant="h6"
+          variant="h4"
           component="div"
           sx={{
-            fontSize: "1.125rem",
-            fontWeight: isFirst ? 600 : 400,
+            fontSize: "1.0rem",
+            fontWeight: 300,
             textAlign: "left",
           }}
         >
           {title}
         </Typography>
 
-        <Tooltip title="En espera">
-          <AccessTimeIcon
-            fontSize="medium"
-            color={isFirst ? "primary" : "action"}
-          />
+        <Tooltip title="Ejercicio">
+          <AccessTimeIcon fontSize="medium" color="action" />
         </Tooltip>
       </Box>
     </Card>
